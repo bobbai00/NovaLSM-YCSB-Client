@@ -170,8 +170,15 @@ public class NovaClient {
 						sock = new Socket(ip, port);
 						sock.setTcpNoDelay(false);
 					} catch (Exception e) {
+						if (debug) {
+							System.out.println("new socket error: " + e);
+							e.printStackTrace();
+						}
 						Thread.sleep(5000);
 					}
+				}
+				if (debug) {
+					System.out.println("finish create sock");
 				}
 				Sock so = new Sock();
 				so.socket = sock;

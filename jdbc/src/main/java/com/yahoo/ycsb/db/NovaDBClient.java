@@ -40,7 +40,7 @@ public class NovaDBClient extends DB {
 	static AtomicBoolean initialized = new AtomicBoolean(false);
 
 	private int numberOfRecords = 0;
-	boolean debug;
+	boolean debug = true;
 
 	private int cardinality = 0;
 
@@ -131,10 +131,16 @@ public class NovaDBClient extends DB {
 				String value = (String) props.get(key);
 				System.out.println(key + ": " + value);
 			}
+			if (debug) {
+				System.out.println("finish additional keys");
+			}
 			System.out.println(this.toString());
 			initialized.set(true);
 		}
 		while (!initialized.get()) {
+		}
+		if (debug) {
+			System.out.println("DB Init finish");
 		}
 	}
 
